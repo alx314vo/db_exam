@@ -67,7 +67,6 @@
     *   *Клиент-сервер:* Клиент шлет запрос (SQL), сервер сам ищет данные и отдает только результат.
 
 ```mermaid
-%%{init: {'theme':'base', 'themeVariables': {'primaryColor':'#495057','primaryTextColor':'#fff','primaryBorderColor':'#212529','lineColor':'#868e96','secondaryColor':'#6c757d','tertiaryColor':'#adb5bd','background':'#ffffff','textColor':'#212529'}}}%%
 graph TB
     subgraph "Файл-серверная архитектура"
         FS1[Клиент 1] -->|Скачивает файлы| FS2[Файлы БД<br/>на диске]
@@ -83,10 +82,6 @@ graph TB
         CS2 --> CS4
     end
     
-    style FS2 fill:#868e96,stroke:#495057,stroke-width:2px,color:#fff
-    style FS4 fill:#868e96,stroke:#495057,stroke-width:2px,color:#fff
-    style CS2 fill:#6c757d,stroke:#495057,stroke-width:2px,color:#fff
-    style CS4 fill:#6c757d,stroke:#495057,stroke-width:2px,color:#fff
 ```
 
 </details>
@@ -111,7 +106,6 @@ graph TB
 *   **M:N (Многие ко многим):** Один студент слушает много курсов, один курс слушают много студентов. *Важно:* В реляционной базе такая связь разрывается через промежуточную таблицу.
 
 ```mermaid
-%%{init: {'theme':'base', 'themeVariables': {'primaryColor':'#495057','primaryTextColor':'#fff','primaryBorderColor':'#212529','lineColor':'#868e96','secondaryColor':'#6c757d','tertiaryColor':'#adb5bd','background':'#ffffff','textColor':'#212529'}}}%%
 erDiagram
     ПАСПОРТ ||--|| ЧЕЛОВЕК : "имеет (1:1)"
     ГРУППА ||--o{ СТУДЕНТ : "содержит (1:N)"
@@ -180,7 +174,6 @@ erDiagram
 *   **Экземпляр отношения:** Конкретные данные (набор кортежей) в отношении.
 
 ```mermaid
-%%{init: {'theme':'base', 'themeVariables': {'primaryColor':'#495057','primaryTextColor':'#fff','primaryBorderColor':'#212529','lineColor':'#868e96','secondaryColor':'#6c757d','tertiaryColor':'#adb5bd','background':'#ffffff','textColor':'#212529'}}}%%
 graph TB
     subgraph "Структура отношения (таблицы)"
         A[Схема отношения<br/>STUDENTS] --> B[Атрибуты<br/>колонки]
@@ -195,10 +188,6 @@ graph TB
         G --> J[Кортеж 3<br/>3, 'Петр', 21, 102]
     end
     
-    style A fill:#6c757d,stroke:#495057,stroke-width:2px,color:#fff
-    style G fill:#adb5bd,stroke:#868e96,stroke-width:2px,color:#000
-    style C fill:#868e96,stroke:#495057,stroke-width:2px,color:#fff
-    style F fill:#6c757d,stroke:#495057,stroke-width:2px,color:#fff
 ```
 
 **3.2. Ключи в реляционной модели**
@@ -264,7 +253,6 @@ graph TB
 Процесс нормализации — это пошаговое приведение таблицы к нормальным формам для устранения избыточности и аномалий.
 
 ```mermaid
-%%{init: {'theme':'base', 'themeVariables': {'primaryColor':'#495057','primaryTextColor':'#fff','primaryBorderColor':'#212529','lineColor':'#868e96','secondaryColor':'#6c757d','tertiaryColor':'#adb5bd','background':'#ffffff','textColor':'#212529'}}}%%
 graph TD
     A[Ненормализованная таблица<br/>Списки, повторения] -->|Атомарность| B[1НФ<br/>Атомарные значения]
     B -->|Устранение частичных<br/>зависимостей| C[2НФ<br/>Полная зависимость от PK]
@@ -273,13 +261,6 @@ graph TD
     E -->|Устранение<br/>многозначных зависимостей| F[4НФ]
     F -->|Устранение<br/>зависимостей соединения| G[5НФ]
     
-    style A fill:#868e96,stroke:#495057,stroke-width:2px,color:#fff
-    style B fill:#adb5bd,stroke:#868e96,stroke-width:2px,color:#000
-    style C fill:#6c757d,stroke:#495057,stroke-width:2px,color:#fff
-    style D fill:#6c757d,stroke:#495057,stroke-width:2px,color:#fff
-    style E fill:#495057,stroke:#212529,stroke-width:2px,color:#fff
-    style F fill:#868e96,stroke:#495057,stroke-width:2px,color:#fff
-    style G fill:#e9ecef,stroke:#adb5bd,stroke-width:2px,color:#000
 ```
 
 **4.2.1. Первая нормальная форма (1НФ):**
@@ -305,10 +286,6 @@ graph LR
     Before --> After2
     Before --> After3
     
-    style Before fill:#868e96,stroke:#495057,stroke-width:2px,color:#fff
-    style After1 fill:#6c757d,stroke:#495057,stroke-width:2px,color:#fff
-    style After2 fill:#6c757d,stroke:#495057,stroke-width:2px,color:#fff
-    style After3 fill:#6c757d,stroke:#495057,stroke-width:2px,color:#fff
 ```
 
 **4.2.2. Вторая нормальная форма (2НФ):**
@@ -369,7 +346,6 @@ graph LR
 *   **ELT (Extract, Load, Transform):** Извлекаем -> Загружаем "как есть" в мощную БД -> Преобразуем силами этой БД. Подходит для Big Data и мощных облаков.
 
 ```mermaid
-%%{init: {'theme':'base', 'themeVariables': {'primaryColor':'#495057','primaryTextColor':'#fff','primaryBorderColor':'#212529','lineColor':'#868e96','secondaryColor':'#6c757d','tertiaryColor':'#adb5bd','background':'#ffffff','textColor':'#212529'}}}%%
 graph LR
     subgraph "ETL процесс"
         A1[Источники данных<br/>OLTP БД, файлы] -->|Extract| B1[Промежуточный<br/>сервер]
@@ -383,10 +359,6 @@ graph LR
         C2 -->|Transform<br/>Внутри БД| D2[Обработанные<br/>данные]
     end
     
-    style B1 fill:#868e96,stroke:#495057,stroke-width:2px,color:#fff
-    style C1 fill:#adb5bd,stroke:#868e96,stroke-width:2px,color:#000
-    style B2 fill:#6c757d,stroke:#495057,stroke-width:2px,color:#fff
-    style C2 fill:#6c757d,stroke:#495057,stroke-width:2px,color:#fff
 ```
 
 </details>
@@ -406,7 +378,6 @@ graph LR
 *   **Завершение транзакции:** `COMMIT` (сохранить изменения) или `ROLLBACK` (отменить все изменения)
 
 ```mermaid
-%%{init: {'theme':'base', 'themeVariables': {'primaryColor':'#495057','primaryTextColor':'#fff','primaryBorderColor':'#212529','lineColor':'#868e96','secondaryColor':'#6c757d','tertiaryColor':'#adb5bd','background':'#ffffff','textColor':'#212529'}}}%%
 stateDiagram-v2
     [*] --> Активная: BEGIN TRANSACTION
     Активная --> Выполнение: Операции SQL
@@ -445,10 +416,6 @@ graph TB
         D[Durability<br/>Долговечность] --> D1[COMMIT = сохранено<br/>навсегда]
     end
     
-    style A fill:#868e96,stroke:#495057,stroke-width:2px,color:#fff
-    style C fill:#6c757d,stroke:#495057,stroke-width:2px,color:#fff
-    style I fill:#6c757d,stroke:#495057,stroke-width:2px,color:#fff
-    style D fill:#adb5bd,stroke:#868e96,stroke-width:2px,color:#000
 ```
 
 **6.3. Уровни изоляции транзакций**
@@ -459,7 +426,6 @@ graph TB
 *   **Serializable (Сериализуемый):** Полная изоляция, как будто все транзакции работают строго по очереди. Аномалий нет, но очень медленно из-за большого количества блокировок.
 
 ```mermaid
-%%{init: {'theme':'base', 'themeVariables': {'primaryColor':'#495057','primaryTextColor':'#fff','primaryBorderColor':'#212529','lineColor':'#868e96','secondaryColor':'#6c757d','tertiaryColor':'#adb5bd','background':'#ffffff','textColor':'#212529'}}}%%
 graph LR
     subgraph "Уровни изоляции (от слабого к сильному)"
         RU[Read Uncommitted<br/>Грязное чтение<br/>Неповторяемое<br/>Фантомы]
@@ -475,10 +441,6 @@ graph LR
     RU -.->|Быстрее| Speed1[Высокая<br/>параллельность]
     S -.->|Медленнее| Speed2[Низкая<br/>параллельность]
     
-    style RU fill:#868e96,stroke:#495057,stroke-width:2px,color:#fff
-    style RC fill:#adb5bd,stroke:#868e96,stroke-width:2px,color:#000
-    style RR fill:#6c757d,stroke:#495057,stroke-width:2px,color:#fff
-    style S fill:#495057,stroke:#212529,stroke-width:2px,color:#fff
 ```
 
 **6.4. Неблагоприятные эффекты параллельного выполнения транзакций (Аномалии)**
@@ -535,7 +497,6 @@ graph LR
 *   **IS/IX/SIX (Intent Locks) Блокировки намерения:** Указывают намерение заблокировать что-то на более низком уровне иерархии. IS (Intent Shared) — намерение читать, IX (Intent Exclusive) — намерение изменять, SIX (Shared with Intent Exclusive) — читать с намерением изменять.
 
 ```mermaid
-%%{init: {'theme':'base', 'themeVariables': {'primaryColor':'#495057','primaryTextColor':'#fff','primaryBorderColor':'#212529','lineColor':'#868e96','secondaryColor':'#6c757d','tertiaryColor':'#adb5bd','background':'#ffffff','textColor':'#212529'}}}%%
 graph LR
     subgraph "Совместимость блокировок"
         A[S<br/>Shared<br/>Чтение] 
@@ -551,9 +512,6 @@ graph LR
     C -->|Совместимо| C1[Можно с S]
     C -->|Несовместимо| C2[Нельзя с X, U]
     
-    style A fill:#6c757d,stroke:#495057,stroke-width:2px,color:#fff
-    style B fill:#868e96,stroke:#495057,stroke-width:2px,color:#fff
-    style C fill:#adb5bd,stroke:#868e96,stroke-width:2px,color:#000
 ```
 
 **7.3. Свойства блокировок**
@@ -570,18 +528,12 @@ graph LR
 *   **Ключ (Key):** Блокировка ключа в индексе.
 
 ```mermaid
-%%{init: {'theme':'base', 'themeVariables': {'primaryColor':'#495057','primaryTextColor':'#fff','primaryBorderColor':'#212529','lineColor':'#868e96','secondaryColor':'#6c757d','tertiaryColor':'#adb5bd','background':'#ffffff','textColor':'#212529'}}}%%
 graph TD
     A[База данных<br/>Database] --> B[Таблица<br/>Table]
     B --> C[Страница<br/>Page 8KB]
     C --> D[Строка<br/>Row/RID]
     C --> E[Ключ индекса<br/>Key]
     
-    style A fill:#868e96,stroke:#495057,stroke-width:2px,color:#fff
-    style B fill:#adb5bd,stroke:#868e96,stroke-width:2px,color:#000
-    style C fill:#6c757d,stroke:#495057,stroke-width:2px,color:#fff
-    style D fill:#6c757d,stroke:#495057,stroke-width:2px,color:#fff
-    style E fill:#495057,stroke:#212529,stroke-width:2px,color:#fff
     
     note1[Крупная гранулярность<br/>Меньше блокировок<br/>Меньше параллельности]
     note2[Мелкая гранулярность<br/>Больше блокировок<br/>Больше параллельности]
@@ -607,13 +559,10 @@ graph TD
 *   **Timeout:** Альтернативный метод — каждая транзакция имеет таймаут ожидания блокировки. Если ждет слишком долго, откатывается автоматически.
 
 ```mermaid
-%%{init: {'theme':'base', 'themeVariables': {'primaryColor':'#495057','primaryTextColor':'#fff','primaryBorderColor':'#212529','lineColor':'#868e96','secondaryColor':'#6c757d','tertiaryColor':'#adb5bd','background':'#ffffff','textColor':'#212529'}}}%%
 graph LR
     T1[Транзакция 1<br/>Блокирует: Ресурс A<br/>Ждет: Ресурс B] -->|ждет| T2[Транзакция 2<br/>Блокирует: Ресурс B<br/>Ждет: Ресурс A]
     T2 -->|ждет| T1
     
-    style T1 fill:#868e96,stroke:#495057,stroke-width:2px,color:#fff
-    style T2 fill:#868e96,stroke:#495057,stroke-width:2px,color:#fff
     
     note1[ЦИКЛ ОБНАРУЖЕН!<br/>Взаимоблокировка]
     
@@ -649,7 +598,6 @@ graph LR
 *   **Гарантия надежности:** Если изменение записано в журнал на диск, оно не потеряется даже при сбое.
 
 ```mermaid
-%%{init: {'theme':'base', 'themeVariables': {'primaryColor':'#495057','primaryTextColor':'#fff','primaryBorderColor':'#212529','lineColor':'#868e96','secondaryColor':'#6c757d','tertiaryColor':'#adb5bd','background':'#ffffff','textColor':'#212529'}}}%%
 sequenceDiagram
     participant T as Транзакция
     participant M as Буфер памяти
@@ -725,11 +673,6 @@ flowchart TD
     
     Undo --> Result[БД в согласованном<br/>состоянии]
     
-    style Start fill:#868e96,stroke:#495057,stroke-width:2px,color:#fff
-    style Analysis fill:#adb5bd,stroke:#868e96,stroke-width:2px,color:#000
-    style Redo fill:#6c757d,stroke:#495057,stroke-width:2px,color:#fff
-    style Undo fill:#6c757d,stroke:#495057,stroke-width:2px,color:#fff
-    style Result fill:#495057,stroke:#212529,stroke-width:2px,color:#fff
 ```
 
 **8.7. Метаданные журнала**
@@ -777,7 +720,6 @@ flowchart TD
     *   *Проекции:* Аналог материализованных представлений/индексов, хранят данные в отсортированном виде.
 
 ```mermaid
-%%{init: {'theme':'base', 'themeVariables': {'primaryColor':'#495057','primaryTextColor':'#fff','primaryBorderColor':'#212529','lineColor':'#868e96','secondaryColor':'#6c757d','tertiaryColor':'#adb5bd','background':'#ffffff','textColor':'#212529'}}}%%
 graph TB
     subgraph "MPP Архитектура - Shared Nothing"
         C[Координатор<br/>Coordinator] --> N1[Узел 1<br/>CPU + RAM + Disk<br/>Данные: A-F]
@@ -804,11 +746,6 @@ graph TB
     
     C -->|Объединить| F[Финальный<br/>результат]
     
-    style C fill:#868e96,stroke:#495057,stroke-width:2px,color:#fff
-    style N1 fill:#6c757d,stroke:#495057,stroke-width:2px,color:#fff
-    style N2 fill:#6c757d,stroke:#495057,stroke-width:2px,color:#fff
-    style N3 fill:#6c757d,stroke:#495057,stroke-width:2px,color:#fff
-    style N4 fill:#6c757d,stroke:#495057,stroke-width:2px,color:#fff
 ```
 
 **10.2. Hadoop**
@@ -1123,7 +1060,6 @@ SQL (Structured Query Language) — стандартизированный яз�
     *   Недостатки: дополнительное место на диске, при поиске нужно два обращения (сначала индекс, потом данные).
 
 ```mermaid
-%%{init: {'theme':'base', 'themeVariables': {'primaryColor':'#495057','primaryTextColor':'#fff','primaryBorderColor':'#212529','lineColor':'#868e96','secondaryColor':'#6c757d','tertiaryColor':'#adb5bd','background':'#ffffff','textColor':'#212529'}}}%%
 graph TB
     subgraph "Кластерный индекс"
         CI1[Индекс<br/>B-Tree] --> CI2[Листовые узлы<br/>= Данные таблицы<br/>Отсортированы]
@@ -1136,10 +1072,6 @@ graph TB
         NCI3 --> NCI4[Поиск: O log n + 1<br/>Два обращения]
     end
     
-    style CI2 fill:#6c757d,stroke:#495057,stroke-width:2px,color:#fff
-    style CI3 fill:#6c757d,stroke:#495057,stroke-width:2px,color:#fff
-    style NCI3 fill:#868e96,stroke:#495057,stroke-width:2px,color:#fff
-    style NCI4 fill:#868e96,stroke:#495057,stroke-width:2px,color:#fff
 ```
 
 **14.1.2. Классификация индексов по структуре данных:**
@@ -1149,7 +1081,6 @@ graph TB
 *   **Полнотекстовый индекс (Full-Text):** Для поиска по тексту, поддерживает морфологию и ранжирование результатов.
 
 ```mermaid
-%%{init: {'theme':'base', 'themeVariables': {'primaryColor':'#495057','primaryTextColor':'#fff','primaryBorderColor':'#212529','lineColor':'#868e96','secondaryColor':'#6c757d','tertiaryColor':'#adb5bd','background':'#ffffff','textColor':'#212529'}}}%%
 graph TD
     subgraph "B-Tree индекс структура"
         Root[Корневой узел<br/>10, 20, 30] --> L1[Лист 1<br/>1-9]
@@ -1167,12 +1098,6 @@ graph TD
     Root -->|15 > 10, 15 < 20| L2
     L2 -->|Найдено| Result[Результат:<br/>Строка 15]
     
-    style Root fill:#868e96,stroke:#495057,stroke-width:2px,color:#fff
-    style L1 fill:#6c757d,stroke:#495057,stroke-width:2px,color:#fff
-    style L2 fill:#6c757d,stroke:#495057,stroke-width:2px,color:#fff
-    style L3 fill:#6c757d,stroke:#495057,stroke-width:2px,color:#fff
-    style L4 fill:#6c757d,stroke:#495057,stroke-width:2px,color:#fff
-    style Result fill:#adb5bd,stroke:#868e96,stroke-width:2px,color:#000
 ```
 
 **14.1.3. Классификация индексов по составу:**
@@ -1272,12 +1197,6 @@ flowchart TD
     Choose -->|Выбран План 2| E[4. Выполнение<br/>Execution Engine]
     E --> Result[Результат запроса]
     
-    style SQL fill:#6c757d,stroke:#495057,stroke-width:2px,color:#fff
-    style P fill:#adb5bd,stroke:#868e96,stroke-width:2px,color:#000
-    style B fill:#adb5bd,stroke:#868e96,stroke-width:2px,color:#000
-    style O fill:#868e96,stroke:#495057,stroke-width:2px,color:#fff
-    style E fill:#6c757d,stroke:#495057,stroke-width:2px,color:#fff
-    style Result fill:#495057,stroke:#212529,stroke-width:2px,color:#fff
 ```
 
 **15.2. Чтение плана (EXPLAIN)**
@@ -1771,7 +1690,6 @@ flowchart TD
     - Лучший вариант для больших отсортированных таблиц
 
 ```mermaid
-%%{init: {'theme':'base', 'themeVariables': {'primaryColor':'#495057','primaryTextColor':'#fff','primaryBorderColor':'#212529','lineColor':'#868e96','secondaryColor':'#6c757d','tertiaryColor':'#adb5bd','background':'#ffffff','textColor':'#212529'}}}%%
 graph TB
     subgraph "Nested Loops Join"
         NL1[Таблица A<br/>малая] -->|Для каждой строки| NL2[Поиск в<br/>Таблице B]
@@ -1792,9 +1710,6 @@ graph TB
         M2 -->|Совпадение| M4[Результат]
     end
     
-    style NL4 fill:#6c757d,stroke:#495057,stroke-width:2px,color:#fff
-    style H5 fill:#6c757d,stroke:#495057,stroke-width:2px,color:#fff
-    style M4 fill:#495057,stroke:#212529,stroke-width:2px,color:#fff
 ```
 
 **С9.5. Анализ плана выполнения**
@@ -1837,7 +1752,6 @@ graph TB
     - Не подходит для OLTP (онлайн-транзакционная обработка)
 
 ```mermaid
-%%{init: {'theme':'base', 'themeVariables': {'primaryColor':'#495057','primaryTextColor':'#fff','primaryBorderColor':'#212529','lineColor':'#868e96','secondaryColor':'#6c757d','tertiaryColor':'#adb5bd','background':'#ffffff','textColor':'#212529'}}}%%
 graph TB
     subgraph "Строчное хранение (Row-based)"
         R1[Строка 1<br/>ID:1 Name:Иван Age:20 City:Москва]
@@ -1858,11 +1772,6 @@ graph TB
     
     Query2[SELECT SUM Age] -->|Читает только колонку| C3
     
-    style R1 fill:#868e96,stroke:#495057,stroke-width:2px,color:#fff
-    style R2 fill:#868e96,stroke:#495057,stroke-width:2px,color:#fff
-    style R3 fill:#868e96,stroke:#495057,stroke-width:2px,color:#fff
-    style C3 fill:#6c757d,stroke:#495057,stroke-width:2px,color:#fff
-    style Query2 fill:#495057,stroke:#212529,stroke-width:2px,color:#fff
 ```
 
 **С10.3. Vertica как пример MPP с колоночным хранением**
@@ -1906,7 +1815,6 @@ graph TB
     - Обновление существующих данных
 
 ```mermaid
-%%{init: {'theme':'base', 'themeVariables': {'primaryColor':'#495057','primaryTextColor':'#fff','primaryBorderColor':'#212529','lineColor':'#868e96','secondaryColor':'#6c757d','tertiaryColor':'#adb5bd','background':'#ffffff','textColor':'#212529'}}}%%
 flowchart LR
     subgraph "ETL процесс"
         E[Extract<br/>Извлечение] -->|Сырые данные| T[Transform<br/>Преобразование]
@@ -1935,10 +1843,6 @@ flowchart LR
     Calc --> Val
     Val --> L
     
-    style E fill:#868e96,stroke:#495057,stroke-width:2px,color:#fff
-    style T fill:#adb5bd,stroke:#868e96,stroke-width:2px,color:#000
-    style L fill:#6c757d,stroke:#495057,stroke-width:2px,color:#fff
-    style DWH fill:#6c757d,stroke:#495057,stroke-width:2px,color:#fff
 ```
 
 **С11.2. ELT (Extract, Load, Transform)**
@@ -2003,7 +1907,6 @@ flowchart LR
 *   Восстановление: загрузка последнего снимка + применение логов
 
 ```mermaid
-%%{init: {'theme':'base', 'themeVariables': {'primaryColor':'#495057','primaryTextColor':'#fff','primaryBorderColor':'#212529','lineColor':'#868e96','secondaryColor':'#6c757d','tertiaryColor':'#adb5bd','background':'#ffffff','textColor':'#212529'}}}%%
 graph TB
     subgraph "In-Memory БД в RAM"
         RAM[Оперативная память<br/>Все данные]
@@ -2026,10 +1929,6 @@ graph TB
     Disk -->|Восстановление| Restore[Загрузка снимка<br/>+ применение логов]
     Restore --> RAM
     
-    style RAM fill:#868e96,stroke:#495057,stroke-width:2px,color:#fff
-    style S fill:#6c757d,stroke:#495057,stroke-width:2px,color:#fff
-    style L fill:#adb5bd,stroke:#868e96,stroke-width:2px,color:#000
-    style Disk fill:#6c757d,stroke:#495057,stroke-width:2px,color:#fff
 ```
 
 **С13.5. Примеры In-Memory БД**
@@ -2090,7 +1989,6 @@ graph TB
 *   **Комбинация:** Можно использовать оба метода одновременно
 
 ```mermaid
-%%{init: {'theme':'base', 'themeVariables': {'primaryColor':'#495057','primaryTextColor':'#fff','primaryBorderColor':'#212529','lineColor':'#868e96','secondaryColor':'#6c757d','tertiaryColor':'#adb5bd','background':'#ffffff','textColor':'#212529'}}}%%
 graph LR
     subgraph "Redis в памяти"
         R[Redis<br/>Данные в RAM]
@@ -2111,10 +2009,6 @@ graph LR
         Both -->|Максимальная<br/>надежность| Restore3[Восстановление]
     end
     
-    style R fill:#868e96,stroke:#495057,stroke-width:2px,color:#fff
-    style RDB fill:#6c757d,stroke:#495057,stroke-width:2px,color:#fff
-    style AOF fill:#adb5bd,stroke:#868e96,stroke-width:2px,color:#000
-    style Both fill:#6c757d,stroke:#495057,stroke-width:2px,color:#fff
 ```
 
 **С14.4. Применение Redis**
